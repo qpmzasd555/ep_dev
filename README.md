@@ -113,7 +113,7 @@ user@your_machene:~$ easyPNR command_pusher 1 "cd EFI\BOOT"
 ```
 
 `special_characters` отправляет в консоль SOL специальные знаки.
-Список знаков: [см. приложение](#===-спец-символы-===).
+Список знаков: [см. приложение](#-спец-символы-).
 Пример:
 ```sh
 user@your_machene:~$ easyPNR special_characters enter
