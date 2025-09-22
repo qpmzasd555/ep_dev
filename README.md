@@ -91,7 +91,7 @@ pip3 install -r requirements.txt
 ```sh
 user@your_machene:~$ easyPNR pinger
 ```
-![[screens/pinger.png]]
+![screens/pinger.png]
 
 > [!IMPORTANT]
 > easyPNR — ваш алиас для инструмента.
