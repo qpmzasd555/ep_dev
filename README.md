@@ -14,7 +14,7 @@ EASY - это инструмент, предназначенный для авт
 
 Авторство: YADRO Team x86
 
-```Лицензия / Статус```
+```Copyright © 20XX ООО "КНС ГРУПП".  All rights reserved.```
 
 СОДЕРЖАНИЕ
 ---------------------------
@@ -88,10 +88,47 @@ pip3 install -r requirements.txt
 `pinger` запускает меню для проверки доступности адресов из [ips.txt](#настройка-файла-ipstxt), команда не требует аргументов.
 
 Пример использования с выводом программы:
-[screenshot]
+```sh
+user@your_machene:~$ easyPNR pinger
+```
+![[Pasted image 20250922114753.png]]
 
-- monitor
-- dual_session
+> [!ВАЖНО]
+> easyPNR — ваш алиас для инструмента.
+
+`monitor` создает tmux окна с панелями для всех IP адресов из ips.txt
+Каждая панель содержит ssh-подключение к соответствующему серверу.
+Автоматически создает дополнительные окна при большом количестве серверов.
+
+`dual_session` cоздаёт для каждого IP из ips.txt отдельное окно tmux с двумя панелями:
+- Левая панель: SSH к BMC (порт 22)
+-  Правая панель: SOL (порт 2200)
+  Горячие клавиши:
+- Alt+n/p - переключение между окнами (следующее/предыдущее)
+- Alt+←/→/↑/↓ - переключение между панелями
+- Alt+0 - завершить tmux сервер (kill-server)
+
+Пример использования с выводом программы:
+```sh
+easyPNR dual_session 1
+```
+```
+✅ Загружены учетные данные: SSH=tech, BMC=admin
+
+[+] Найдено IP: 1
+[+] Быстрый запуск: 1 IP с режимом 'horizontal'
+[+] Выбранные IP: 188.32.210.218
+
+=== Dual Session ===
+Горячие клавиши:
+  Alt+n/p - переключение окон
+  Alt+←/→/↑/↓ - переключение панелей
+  Alt+0 - завершить сервер
+
+
+ *** Для выхода из сессии используйте Alt+0 или в SSH напишите exit, потом kill-server ***
+```
+[скрин]
 ### Логи
 
 ### Управление
@@ -99,14 +136,14 @@ pip3 install -r requirements.txt
 
 Пример использования с выводом программы:
 ```sh
-user@your_machene:~$ easyPNR power_switcher on
+easyPNR power_switcher on
 ```
 
 `redfish_boot_switcher` изменяет, куда загружается хост
 
 Пример использования с выводом программы:
 ```sh
-user@your_machene:~$ easyPNR boot_switcher uefishell
+easyPNR boot_switcher uefishell
 ```
 ### Обновления
 `bmc_update` обновляет BMC 
@@ -115,13 +152,52 @@ user@your_machene:~$ easyPNR boot_switcher uefishell
 
 `fpga_updater` обновляет FPGA
 ### Файлы
-`uploader`
+`uploader` загружает файлы на сервер
 
-`downloader`
+Пример использования с выводом программы:
+```sh
+easyPNR uploader
+```
+```
+Файлы в папке uploader:
+------------------------------------------------------------
+ 1. vegman_dump_collector_v4.6.1.sh          (0.0 MB)
+ 2. CPLDmbdx8678x004b-v1.10.0-g5177f2f.fs    (2.0 MB)
+ 3. bmc-vegman-rx20g2-update-v2.2.1-g695910.bin.md5 (0.0 MB)
+ 4. uefi-vegman-rx20g2-2.2.1-gec1bc1.bin     (7.3 MB)
+ 5. uefi-vegman-rx20g2-2.2.1-gec1bc1.bin.md5 (0.0 MB)
+ 6. uefi-vegman-rx20g2-1.10.8-g8fefc3.bin    (8.1 MB)
+ 7. nvram-VEGMAN.R120-v1.10.4-g74bff8.02062501F5.bin (0.1 MB)
+ 8. bmc-vegman-rx20g2-update-v1.10.8re36884.bin (26.8 MB)
+ 9. bmc-vegman-rx20g2-update-v2.2.1-g695910.bin (27.6 MB)
+10. openbmc-upgrade-guide-2-2-1.pdf          (0.2 MB)
+------------------------------------------------------------
+Всего файлов: 10
+
+Использование:
+  easy_pnr 13 all             - Загрузить все файлы
+  easy_pnr 13 1               - Загрузить файл №1
+  easy_pnr 13 1,4             - Загрузить файлы №1 и №4
+  easy_pnr 13 1 4 5           - Загрузить файлы №1, №4 и №5
+  easy_pnr 13 <имя_файла>     - Загрузить конкретный файл
+  easy_pnr 13 -h              - Показать подробную справку
+```
+
+`downloader` скачивает файлы из папки /tmp/ всех серверов из [ips.txt](#настройка-файла-ipstxt) 
+
+Пример использования с выводом программы:
+```sh
+easyPNR downloader
+```
+
 ### Служебные
 `catcher` "ловит" состояние сервера для грамотного исполнения скриптов, чтобы отправлять команды в нужный момент времени.
 
-Способен зафиксировать:
+Способен зафиксировать, когда сервер вошел в:
+- UEFI Shell
+- YADRO UEFI BIOS
+- SDS
+- LiveCD
 
 `commands_pusher` отправляет команды в консоль. Первый аргумент - пункт назначения команды (SOL, BMC, SDS), второй - сама команда.
 
@@ -133,7 +209,7 @@ user@your_machene:~$ easyPNR boot_switcher uefishell
 ```
 Пример:
 ```sh
-user@your_machene:~$ easyPNR command_pusher 1 "cd EFI\BOOT"
+easyPNR command_pusher 1 "cd EFI\BOOT"
 ```
 
 `special_characters` отправляет в консоль SOL специальные знаки.
@@ -142,7 +218,7 @@ user@your_machene:~$ easyPNR command_pusher 1 "cd EFI\BOOT"
 
 Пример:
 ```sh
-user@your_machene:~$ easyPNR special_characters enter
+easyPNR special_characters enter
 ```
 
 
