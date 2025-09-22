@@ -93,7 +93,7 @@ user@your_machene:~$ easyPNR pinger
 ```
 ![screens/pinger.png](screens/pinger.png)
 
-> [!ПРИМЕЧАНИЕ]
+> [!NOTE]
 > easyPNR — ваш алиас для инструмента.
 
 `monitor` создает tmux окна с панелями для всех IP адресов из ips.txt
