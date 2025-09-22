@@ -91,9 +91,9 @@ pip3 install -r requirements.txt
 ```sh
 user@your_machene:~$ easyPNR pinger
 ```
-![[Pasted image 20250922114753.png]]
+![[screens/pinger.png]]
 
-> [!ВАЖНО]
+> [!IMPORTANT]
 > easyPNR — ваш алиас для инструмента.
 
 `monitor` создает tmux окна с панелями для всех IP адресов из ips.txt
