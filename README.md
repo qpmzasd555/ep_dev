@@ -322,11 +322,6 @@ ep special_characters enter
 | clear       | \x1b[2J | Очистка экрана |
 | clear_line  | \x1b[K  | Очистка строки |
 
-
-</details>
-
-
-
     # Базовые управляющие символы
     "ctrl_c":        "\x03",        # Ctrl+C - прерывание
     "ctrl_d":        "\x04",        # Ctrl+D - EOF
@@ -379,3 +374,5 @@ ep special_characters enter
     "escape":        "\x1b",        # Escape
     "clear":         "\x1b[2J",     # Очистка экрана
     "clear_line":    "\x1b[K",      # Очистка строки
+
+</details>
