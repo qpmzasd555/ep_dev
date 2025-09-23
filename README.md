@@ -244,14 +244,13 @@ ep special_characters enter
 
 
 
-
-
-
-
-
 Приложения
 ==========
 ### \=\=\= Спец символы \=\=\=
+<details>
+
+<summary>===</summary>
+
 `Базовые управляющие символы`
 
 | Обозначение | Код  | Описание                 |
@@ -322,6 +321,9 @@ ep special_characters enter
 | escape      | \x1b    | Escape         |
 | clear       | \x1b[2J | Очистка экрана |
 | clear_line  | \x1b[K  | Очистка строки |
+
+
+</details>
 
 
 
