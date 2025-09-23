@@ -92,7 +92,13 @@ echo alias ep='cd /home/mrbushy/EasyPNR/easy_pnr/ && source venv/bin/activate &&
 ```sh
 user@your_machene:~$ ep pinger
 ```
+<details>
+
+<summary>Вывод</summary>
+
 ![screens/pinger.png](screens/pinger.png)
+
+</details>
 
 #### `monitor`
 Создает tmux окна с панелями для всех IP адресов из ips.txt
