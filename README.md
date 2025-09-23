@@ -247,7 +247,9 @@ ep special_characters enter
 Приложения
 ==========
 <details>
-<summary>===</summary>
+      
+<summary>Спец символы</summary>
+
 ### \=\=\= Спец символы \=\=\=
 
 `Базовые управляющие символы`
