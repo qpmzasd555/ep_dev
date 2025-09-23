@@ -20,8 +20,8 @@ EASY - это инструмент, предназначенный для авт
 ---------------------------
 1. [БЫСТРЫЙ СТАРТ](#быстрый-старт)
 	1. [Минимальные требования](#минимальные-требования)
-	2. [Начало работы](#начало-работы)
-	3. [Установка зависимостей](#установка-зависимостей)
+	2. [Установка зависимостей](#установка-зависимостей)
+	3. [Начало работы](#начало-работы)
 2. [КОНФИГУРАЦИЯ](#конфигурация)
 3. [ОСНОВНЫЕ КОМАНДЫ](#основные-команды)
 
@@ -30,13 +30,22 @@ EASY - это инструмент, предназначенный для авт
 ### Минимальные требования
 - Linux Ubuntu 24.04 (можно использовать и другие версии, но они не тестировались)
 - Python 3.10
-### Начало работы
 
 ### Установка зависимостей
 Для установки всех зависимостей, используйте команду в терминале:
 ```sh
 pip3 install -r requirements.txt
 ```
+
+### Начало работы
+Для начала работы с инструментом нужно создать в системе алиас (сокращение):
+```
+echo alias ep='cd /home/mrbushy/EasyPNR/easy_pnr/ && source venv/bin/activate && python3 /home/mrbushy/EasyPNR/easy_pnr/EasyPNR_prod.py' >> ~/.bashrc && source ~/.bashrc
+```
+Теперь вместо длинной команды в одиночных кавычках достаточно писать просто `ep`
+
+> [!TIP]
+> Вместо `ep` можно написать любой удобный вам алиас.
 
 КОНФИГУРАЦИЯ
 -------------------------------
@@ -89,12 +98,9 @@ pip3 install -r requirements.txt
 
 Пример использования с выводом программы:
 ```sh
-user@your_machene:~$ easyPNR pinger
+user@your_machene:~$ ep pinger
 ```
 ![screens/pinger.png](screens/pinger.png)
-
-> [!NOTE]
-> easyPNR — ваш алиас для инструмента.
 
 `monitor` создает tmux окна с панелями для всех IP адресов из ips.txt
 Каждая панель содержит ssh-подключение к соответствующему серверу.
@@ -110,7 +116,7 @@ user@your_machene:~$ easyPNR pinger
 
 Пример использования с выводом программы:
 ```sh
-easyPNR dual_session 1
+ep dual_session 1
 ```
 ```
 ✅ Загружены учетные данные: SSH=tech, BMC=admin
@@ -136,14 +142,14 @@ easyPNR dual_session 1
 
 Пример использования с выводом программы:
 ```sh
-easyPNR power_switcher on
+ep power_switcher on
 ```
 
 `redfish_boot_switcher` изменяет, куда загружается хост
 
 Пример использования с выводом программы:
 ```sh
-easyPNR boot_switcher uefishell
+ep boot_switcher uefishell
 ```
 ### Обновления
 `bmc_update` обновляет BMC 
@@ -156,7 +162,7 @@ easyPNR boot_switcher uefishell
 
 Пример использования с выводом программы:
 ```sh
-easyPNR uploader
+ep uploader
 ```
 ```
 Файлы в папке uploader:
@@ -187,7 +193,7 @@ easyPNR uploader
 
 Пример использования с выводом программы:
 ```sh
-easyPNR downloader
+ep downloader
 ```
 
 ### Служебные
@@ -209,7 +215,7 @@ easyPNR downloader
 ```
 Пример:
 ```sh
-easyPNR command_pusher 1 "cd EFI\BOOT"
+ep command_pusher 1 "cd EFI\BOOT"
 ```
 
 `special_characters` отправляет в консоль SOL специальные знаки.
@@ -218,7 +224,7 @@ easyPNR command_pusher 1 "cd EFI\BOOT"
 
 Пример:
 ```sh
-easyPNR special_characters enter
+ep special_characters enter
 ```
 
 
@@ -231,6 +237,21 @@ easyPNR special_characters enter
 Приложения
 =================
 ### \=\=\= Спец символы \=\=\=
+`Базовые управляющие символы`
+
+| Обозначение | Код  | Описание                 |
+| ----------- | ---- | ------------------------ |
+| ctrl_c      | \x03 | Ctrl+C - прерывание      |
+| ctrl_d      | \x04 | EOF                      |
+| ctrl_z      | \x1a | приостановка             |
+| ctrl_l      | \x0c | очистка экрана           |
+| ctrl_u      | \x15 | очистка строки           |
+| ctrl_k      | \x0b | удаление до конца строки |
+| ctrl_a      | \x01 | начало строки            |
+| ctrl_e      | \x05 | конец строки             |
+| ctrl_w      | \x17 | удаление слова назад     |
+
+
     # Базовые управляющие символы
     "ctrl_c":        "\x03",        # Ctrl+C - прерывание
     "ctrl_d":        "\x04",        # Ctrl+D - EOF
