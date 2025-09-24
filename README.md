@@ -20,20 +20,60 @@ EASY - это инструмент, предназначенный для авт
 -------------
 ### Минимальные требования
 - Linux Ubuntu 24.04 (можно использовать и другие версии, но они не тестировались)
-- Python 3.10
+- Python 3.10 (в WSL уже есть)
+
+### Установка EASY в WSL
+Скопируйте проект в `C:\EasyPNR` вручную или командой (Windows CMD):
+```cmd
+mkdir c:\EasyPNR
+cd c:\EasyPNR
+git clone https://github.com/Stanly1-1/Engineering-Automation-Shell-YADRO.git
+```
+<details>
+
+<summary>Результат</summary>
+
+![screens/WSL_setup.png](screens/WSL_setup.png)
+
+</details>
+
+В WSL перейдите в /mnt/c/EasyPNR/ (там сейчас находится проект):
+```sh
+cd /mnt/c/EasyPNR/
+```
+
+Создайте виртуальное окружение (немного терпения, команда выполняется, ничего не зависло):
+```sh
+python3 -m venv venv
+```
+
+Активируйте его:
+```sh
+source venv/bin/activate
+```
+Должна появиться приписка "(venv)"
 
 ### Установка зависимостей
-Для установки всех зависимостей, используйте команду в терминале:
+Обновите pip:
 ```sh
-pip3 install -r requirements.txt
+pip install --upgrade pip
+```
+
+> [!IMPORTANT]
+> Проверьте, что вы в виртуальном окружении!
+> В начале командной строки должна быть надпись (venv)!
+
+Установите зависимости:
+```sh
+pip install -r requirements.txt
 ```
 
 ### Начало работы
 Для начала работы с инструментом нужно создать в системе алиас (сокращение):
 ```
-echo alias ep='cd /home/mrbushy/EasyPNR/easy_pnr/ && source venv/bin/activate && python3 /home/mrbushy/EasyPNR/easy_pnr/EasyPNR_prod.py' >> ~/.bashrc && source ~/.bashrc
+echo "alias ep='cd /mnt/c/EasyPNR/ && source venv/bin/activate && python3 /mnt/c/EasyPNR/EasyPNR_prod.py'" >> ~/.bashrc && source ~/.bashrc
 ```
-Теперь вместо длинной команды в одиночных кавычках достаточно писать просто `ep`
+Теперь инструмент доступен по команде `ep`
 
 > [!TIP]
 > Вместо `ep` можно написать любой удобный вам алиас.
@@ -86,7 +126,10 @@ echo alias ep='cd /home/mrbushy/EasyPNR/easy_pnr/ && source venv/bin/activate &&
 ОСНОВНЫЕ КОМАНДЫ
 ----------------
 ### Мониторинг
-#### `pinger`
+
+---
+
+#### `- (1) pinger`
 Запускает меню для проверки доступности адресов из [ips.txt](#настройка-файла-ipstxt), команда не требует аргументов.  
 Пример использования с выводом программы:
 ```sh
@@ -100,10 +143,14 @@ user@your_machene:~$ ep pinger
 
 </details>
 
+---
+
 #### `monitor`
 Создает tmux окна с панелями для всех IP адресов из ips.txt
 Каждая панель содержит ssh-подключение к соответствующему серверу.
 Автоматически создает дополнительные окна при большом количестве серверов.
+
+---
 
 #### `dual_session`
 Создаёт для каждого IP из ips.txt отдельное окно tmux с двумя панелями:  
@@ -119,9 +166,11 @@ user@your_machene:~$ ep pinger
 ```sh
 ep dual_session 1
 ```
-```
-✅ Загружены учетные данные: SSH=tech, BMC=admin
+<details>
 
+<summary>Вывод</summary>
+
+```
 [+] Найдено IP: 1
 [+] Быстрый запуск: 1 IP с режимом 'horizontal'
 [+] Выбранные IP: 188.32.210.218
@@ -134,12 +183,22 @@ ep dual_session 1
 
 
  *** Для выхода из сессии используйте Alt+0 или в SSH напишите exit, потом kill-server ***
-```
+
 [скрин]
+```
+
+</details>
+
+---
 
 ### Логи
 
+---
+
 ### Управление
+
+---
+
 #### `power_switcher`
 Включает/выключает хост, принимает аргумент `on/off`
 
@@ -147,6 +206,8 @@ ep dual_session 1
 ```sh
 ep power_switcher on
 ```
+
+---
 
 #### `redfish_boot_switcher`
 Изменяет, куда загружается хост
@@ -156,17 +217,31 @@ ep power_switcher on
 ep boot_switcher uefishell
 ```
 
+---
+
 ### Обновления
+
+---
+
 #### `bmc_update`
-Обновляет BMC 
+Обновляет BMC
+
+---
 
 #### `uefi_update`
 Обновляет BIOS
 
+---
+
 #### `fpga_updater`
 Обновляет FPGA
 
+---
+
 ### Файлы
+
+---
+
 #### `uploader`
 Загружает файлы на сервер
 
@@ -174,6 +249,10 @@ ep boot_switcher uefishell
 ```sh
 ep uploader
 ```
+<details>
+
+<summary>Вывод</summary>
+
 ```
 Файлы в папке uploader:
 ------------------------------------------------------------
@@ -199,6 +278,10 @@ ep uploader
   easy_pnr 13 -h              - Показать подробную справку
 ```
 
+</details>
+
+---
+
 #### `downloader`
 Скачивает файлы из папки /tmp/ всех серверов из [ips.txt](#настройка-файла-ipstxt) 
 
@@ -207,7 +290,12 @@ ep uploader
 ep downloader
 ```
 
+---
+
 ### Служебные
+
+---
+
 #### `catcher`
 "Ловит" состояние сервера для грамотного исполнения скриптов, чтобы отправлять команды в нужный момент времени.
 
@@ -216,6 +304,8 @@ ep downloader
 - YADRO UEFI BIOS
 - SDS
 - LiveCD
+
+---
 
 #### `commands_pusher`
 Отправляет команды в консоль. Первый аргумент - пункт назначения команды (SOL, BMC, SDS), второй - сама команда.
@@ -232,6 +322,8 @@ ep downloader
 ep command_pusher 1 "cd EFI\BOOT"
 ```
 
+---
+
 #### `special_characters`
 Отправляет в консоль SOL специальные знаки.
 
@@ -242,7 +334,7 @@ ep command_pusher 1 "cd EFI\BOOT"
 ep special_characters enter
 ```
 
-
+---
 
 Приложения
 ==========
