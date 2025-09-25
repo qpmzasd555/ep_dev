@@ -137,7 +137,7 @@ SDS_LOGIN_ROOT  /  PASSWORD  -  логин и пароль от рута SDS
 > [!TIP]  
 > К любой команде можно добавить флаг `-h` для получения справочной информации по команде.
 
-### Мониторинг
+## Мониторинг
 
 $\color{#9BDDFF}\large{\textbf{(1) pinger}}$
 
@@ -208,7 +208,7 @@ ep dual_session 1
 
 ---
 
-### Логи
+## Логи
 
 $\color{cyan}\large{\textbf{(3) bmc log}}$
 
@@ -220,7 +220,7 @@ $\color{cyan}\large{\textbf{(4) sds log}}$
 
 ---
 
-### Управление
+## Управление
 
 $\color{cyan}\large{\textbf{(8) power control}}$
 
@@ -250,7 +250,7 @@ ep boot_switcher uefishell
 
 ---
 
-### Обновления
+## Обновления
 
 $\color{cyan}\large{\textbf{(15) bmc update}}$
 
@@ -270,7 +270,7 @@ $\color{cyan}\large{\textbf{(18) fpga updater}}$
 
 ---
 
-### Файлы
+## Файлы
 
 $\color{cyan}\large{\textbf{(13) uploader}}$
 
@@ -324,7 +324,7 @@ ep downloader
 
 ---
 
-### Служебные
+## Служебные
 
 $\color{cyan}\large{\textbf{(10) catcher}}$
 
