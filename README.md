@@ -149,11 +149,9 @@ user@your_machene:~$ ep pinger
 Каждая панель содержит ssh-подключение к соответствующему серверу.  
 Автоматически создает дополнительные окна при большом количестве серверов.
 
-<code style="color : aqua">text</code>
-
 ---
 
-#### <span style="color: cyan;">(7) dual_session</span>
+#### ${\textsf{\color{cyan}(7) dual session}}$
 Создаёт для каждого IP из [ips.txt](#настройка-файла-ipstxt) отдельное окно tmux с двумя панелями:
 - Левая панель: SSH к BMC (порт 22)
 - Правая панель: SOL (порт 2200)  
@@ -197,7 +195,7 @@ ep dual_session 1
 
 ### Управление
 
-#### ${\textsf{\color{cyan}(8) power\_control}}$
+#### ${\textsf{\color{cyan}(8) power control}}$
 Включает/выключает хост.  
 Принимает аргумент:
 ```
@@ -213,7 +211,7 @@ ep power_control on
 
 ---
 
-#### ${\textsf{\color{cyan}(9) boot\_switcher}}$
+#### ${\textsf{\color{cyan}(9) boot switcher}}$
 Изменяет, куда загружается хост
 
 Пример использования с выводом программы:
@@ -225,17 +223,17 @@ ep boot_switcher uefishell
 
 ### Обновления
 
-#### ${\textsf{\color{cyan}(15) bmc\_update}}$
+#### ${\textsf{\color{cyan}(15) bmc update}}$
 Обновляет BMC
 
 ---
 
-#### ${\textsf{\color{cyan}(16) uefi\_update}}$
+#### ${\textsf{\color{cyan}(16) uefi update}}$
 Обновляет BIOS
 
 ---
 
-#### ${\textsf{\color{cyan}(18) fpga\_updater}}$
+#### ${\textsf{\color{cyan}(18) fpga updater}}$
 Обновляет FPGA
 
 ---
@@ -305,7 +303,7 @@ ep downloader
 
 ---
 
-#### ${\textsf{\color{cyan}(11) commands\_pusher}}$
+#### ${\textsf{\color{cyan}(11) commands pusher}}$
 Отправляет команды в консоль. Первый аргумент - пункт назначения команды (SOL, BMC, SDS), второй - сама команда.
 
 Формат пункта назначения:
@@ -322,7 +320,7 @@ ep command_pusher 1 "cd EFI\BOOT"
 
 ---
 
-#### ${\textsf{\color{cyan}(12) special\_characters}}$
+#### ${\textsf{\color{cyan}(12) special characters}}$
 Отправляет в консоль SOL специальные знаки.
 
 Список знаков: см. [приложение](#-спец-символы-).
