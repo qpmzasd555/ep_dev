@@ -151,7 +151,7 @@ user@your_machene:~$ ep pinger
 
 ---
 
-#### ${\textsf{\color{cyan}(7) dual\_session}}$
+#### ${\textsf{\color{cyan}"(7) dual\_session}"}$
 Создаёт для каждого IP из [ips.txt](#настройка-файла-ipstxt) отдельное окно tmux с двумя панелями:
 - Левая панель: SSH к BMC (порт 22)
 - Правая панель: SOL (порт 2200)  
