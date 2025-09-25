@@ -149,6 +149,8 @@ user@your_machene:~$ ep pinger
 Каждая панель содержит ssh-подключение к соответствующему серверу.  
 Автоматически создает дополнительные окна при большом количестве серверов.
 
+<code style="color : aqua">text</code>
+
 ---
 
 #### <span style="color: cyan;">(7) dual_session</span>
