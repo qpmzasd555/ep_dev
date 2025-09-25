@@ -139,7 +139,8 @@ SDS_LOGIN_ROOT  /  PASSWORD  -  логин и пароль от рута SDS
 
 ### Мониторинг
 
-#### $\color{#9BDDFF}\large{\textbf{(1) pinger}}$
+$\color{#9BDDFF}\large{\textbf{(1) pinger}}$
+
 Запускает меню для проверки доступности адресов из [ips.txt](#настройка-файла-ipstxt), команда не требует аргументов.
 
 Пример использования с выводом программы:
@@ -155,7 +156,8 @@ user@your_machene:~$ ep pinger
 
 ---
 
-#### $\color{#a349a4}\large{\textbf{(6) monitor}}$
+$\color{#a349a4}\large{\textbf{(6) monitor}}$
+
 Создает tmux окна с панелями для всех IP адресов из [ips.txt](#настройка-файла-ipstxt)  
 Каждая панель содержит ssh-подключение к соответствующему серверу.  
 Автоматически создает дополнительные окна при большом количестве серверов.
@@ -167,7 +169,8 @@ ep 6 1
 
 ---
 
-#### $\color{cyan}\large{\textbf{(7) dual session}}$
+$\color{cyan}\large{\textbf{(7) dual session}}$
+
 Создаёт для каждого IP из [ips.txt](#настройка-файла-ipstxt) отдельное окно tmux с двумя панелями:
 - Левая панель: SSH к BMC (порт 22)
 - Правая панель: SOL (порт 2200)  
@@ -207,17 +210,20 @@ ep dual_session 1
 
 ### Логи
 
-#### $\color{cyan}\large{\textbf{(3) bmc log}}$
+$\color{cyan}\large{\textbf{(3) bmc log}}$
+
 Собирает логи BMC с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
 
-#### $\color{cyan}\large{\textbf{(4) sds log}}$
+$\color{cyan}\large{\textbf{(4) sds log}}$
+
 Собирает логи SDS с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
 
 ---
 
 ### Управление
 
-#### $\color{cyan}\large{\textbf{(8) power control}}$
+$\color{cyan}\large{\textbf{(8) power control}}$
+
 Включает/выключает хост.  
 Принимает аргумент:
 ```
@@ -233,7 +239,8 @@ ep power_control on
 
 ---
 
-#### $\color{cyan}\large{\textbf{(9) boot switcher}}$
+$\color{cyan}\large{\textbf{(9) boot switcher}}$
+
 Изменяет, куда загружается хост
 
 Пример использования:
@@ -245,24 +252,28 @@ ep boot_switcher uefishell
 
 ### Обновления
 
-#### $\color{cyan}\large{\textbf{(15) bmc update}}$
+$\color{cyan}\large{\textbf{(15) bmc update}}$
+
 Обновляет BMC
 
 ---
 
-#### $\color{cyan}\large{\textbf{(16) uefi update}}$
+$\color{cyan}\large{\textbf{(16) uefi update}}$
+
 Обновляет BIOS
 
 ---
 
-#### $\color{cyan}\large{\textbf{(18) fpga updater}}$
+$\color{cyan}\large{\textbf{(18) fpga updater}}$
+
 Обновляет FPGA
 
 ---
 
 ### Файлы
 
-#### $\color{cyan}\large{\textbf{(13) uploader}}$
+$\color{cyan}\large{\textbf{(13) uploader}}$
+
 Загружает файлы на сервер
 
 Пример использования:
@@ -302,7 +313,8 @@ ep uploader
 
 ---
 
-#### $\color{cyan}\large{\textbf{(14) downloader}}$
+$\color{cyan}\large{\textbf{(14) downloader}}$
+
 Скачивает файлы из папки /tmp/ всех серверов из [ips.txt](#настройка-файла-ipstxt) 
 
 Пример использования:
@@ -314,7 +326,8 @@ ep downloader
 
 ### Служебные
 
-#### $\color{cyan}\large{\textbf{(10) catcher}}$
+$\color{cyan}\large{\textbf{(10) catcher}}$
+
 "Ловит" состояние сервера для грамотного исполнения скриптов, чтобы отправлять команды в нужный момент времени.
 
 Способен зафиксировать, когда сервер вошел в:
@@ -325,7 +338,8 @@ ep downloader
 
 ---
 
-#### $\color{cyan}\large{\textbf{(11) commands pusher}}$
+$\color{cyan}\large{\textbf{(11) commands pusher}}$
+
 Отправляет команды в консоль. Первый аргумент - пункт назначения команды (SOL, BMC, SDS), второй - сама команда.
 
 Формат пункта назначения:
@@ -342,7 +356,8 @@ ep command_pusher 1 "cd EFI\BOOT"
 
 ---
 
-#### $\color{cyan}\large{\textbf{(12) special characters}}$
+$\color{cyan}\large{\textbf{(12) special characters}}$
+
 Отправляет в консоль SOL специальные знаки.
 
 Список знаков: см. [приложение](#-спец-символы-).
