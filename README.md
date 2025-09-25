@@ -91,7 +91,17 @@ echo "alias ep='cd /mnt/c/EasyPNR/ && source venv/bin/activate && python3 /mnt/c
 10.10.77.4
 ```
 ### Настройка файла credentials.py
-Все логины, пароли тут.
+Все логины, пароли тут.  
+Названия переменных говорят за себя:  
+```txt
+ADMIN_LOGIN     /  PASSWORD  -  логин и пароль от админа BMC  
+TECH_LOGIN      /  PASSWORD  -  логин и пароль от теха  
+ROOT_LOGIN      /  PASSWORD  -  логин и пароль от рута  
+SDS_LOGIN       /  PASSWORD  -  логин и пароль от SDS  
+SDS_LOGIN_ROOT  /  PASSWORD  -  логин и пароль от рута SDS
+```
+`MAX_PARALLEL` и `MAX_WORKERS` контролируют, сколько параллельных процессов могут запуститься.  
+Эти две настройки лучше не трогать.
 
 СТРУКТУРА ПРОЕКТА
 -----------------
@@ -134,14 +144,14 @@ user@your_machene:~$ ep pinger
 
 ---
 
-#### `-> (6) monitor`
+#### <font color="aqua">`-> (6) monitor`</font>
 Создает tmux окна с панелями для всех IP адресов из [ips.txt](#настройка-файла-ipstxt)  
 Каждая панель содержит ssh-подключение к соответствующему серверу.  
 Автоматически создает дополнительные окна при большом количестве серверов.
 
 ---
 
-#### `-> (7) dual_session`
+#### <code style="color : cyan">`-> (7) dual_session`</code>
 Создаёт для каждого IP из [ips.txt](#настройка-файла-ipstxt) отдельное окно tmux с двумя панелями:
 - Левая панель: SSH к BMC (порт 22)
 - Правая панель: SOL (порт 2200)  
