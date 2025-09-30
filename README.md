@@ -156,7 +156,7 @@ user@your_machene:~$ ep pinger
 
 ---
 
-$\color{#a349a4}\large{\textbf{(6) monitor}}$
+$\color{#9BDDFF}\large{\textbf{(6) monitor}}$
 
 Создает tmux окна с панелями для всех IP адресов из [ips.txt](#настройка-файла-ipstxt)  
 Каждая панель содержит ssh-подключение к соответствующему серверу.  
@@ -169,7 +169,7 @@ ep 6 1
 
 ---
 
-$\color{cyan}\large{\textbf{(7) dual session}}$
+$\color{#9BDDFF}\large{\textbf{(7) dual session}}$
 
 Создаёт для каждого IP из [ips.txt](#настройка-файла-ipstxt) отдельное окно tmux с двумя панелями:
 - Левая панель: SSH к BMC (порт 22)
@@ -210,11 +210,11 @@ ep dual_session 1
 
 ## Логи
 
-$\color{cyan}\large{\textbf{(3) bmc log}}$
+$\color{#9BDDFF}\large{\textbf{(3) bmc log}}$
 
 Собирает логи BMC с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
 
-$\color{cyan}\large{\textbf{(4) sds log}}$
+$\color{#9BDDFF}\large{\textbf{(4) sds log}}$
 
 Собирает логи SDS с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
 
@@ -222,7 +222,7 @@ $\color{cyan}\large{\textbf{(4) sds log}}$
 
 ## Управление
 
-$\color{cyan}\large{\textbf{(8) power control}}$
+$\color{#9BDDFF}\large{\textbf{(8) power control}}$
 
 Включает/выключает хост.  
 Принимает аргумент:
@@ -239,7 +239,7 @@ ep power_control on
 
 ---
 
-$\color{cyan}\large{\textbf{(9) boot switcher}}$
+$\color{#9BDDFF}\large{\textbf{(9) boot switcher}}$
 
 Изменяет, куда загружается хост
 
@@ -252,19 +252,19 @@ ep boot_switcher uefishell
 
 ## Обновления
 
-$\color{cyan}\large{\textbf{(15) bmc update}}$
+$\color{#9BDDFF}\large{\textbf{(15) bmc update}}$
 
 Обновляет BMC
 
 ---
 
-$\color{cyan}\large{\textbf{(16) uefi update}}$
+$\color{#9BDDFF}\large{\textbf{(16) uefi update}}$
 
 Обновляет BIOS
 
 ---
 
-$\color{cyan}\large{\textbf{(18) fpga updater}}$
+$\color{#9BDDFF}\large{\textbf{(18) fpga updater}}$
 
 Обновляет FPGA
 
@@ -272,16 +272,15 @@ $\color{cyan}\large{\textbf{(18) fpga updater}}$
 
 ## Файлы
 
-$\color{cyan}\large{\textbf{(13) uploader}}$
+$\color{#9BDDFF}\large{\textbf{(13) uploader}}$
 
-Загружает файлы на сервер
+Загружает файлы из папки 'uploader' на сервер (см. [структуру проекта](#-структура-проекта))
 
 Пример использования:
 ```sh
 ep uploader
 ```
 <details>
-
 <summary>Вывод</summary>
 
 ```
@@ -313,7 +312,7 @@ ep uploader
 
 ---
 
-$\color{cyan}\large{\textbf{(14) downloader}}$
+$\color{#9BDDFF}\large{\textbf{(14) downloader}}$
 
 Скачивает файлы из папки /tmp/ всех серверов из [ips.txt](#настройка-файла-ipstxt) 
 
@@ -326,7 +325,7 @@ ep downloader
 
 ## Служебные
 
-$\color{cyan}\large{\textbf{(10) catcher}}$
+$\color{#9BDDFF}\large{\textbf{(10) catcher}}$
 
 "Ловит" состояние сервера для грамотного исполнения скриптов, чтобы отправлять команды в нужный момент времени.
 
@@ -338,7 +337,7 @@ $\color{cyan}\large{\textbf{(10) catcher}}$
 
 ---
 
-$\color{cyan}\large{\textbf{(11) commands pusher}}$
+$\color{#9BDDFF}\large{\textbf{(11) commands pusher}}$
 
 Отправляет команды в консоль. Первый аргумент - пункт назначения команды (SOL, BMC, SDS), второй - сама команда.
 
@@ -356,7 +355,7 @@ ep command_pusher 1 "cd EFI\BOOT"
 
 ---
 
-$\color{cyan}\large{\textbf{(12) special characters}}$
+$\color{#9BDDFF}\large{\textbf{(12) special characters}}$
 
 Отправляет в консоль SOL специальные знаки.
 
@@ -437,4 +436,5 @@ ep special_characters enter
     "escape":        "\x1b",        # Escape
     "clear":         "\x1b[2J",     # Очистка экрана
     "clear_line":    "\x1b[K",      # Очистка строки
+
 </details>
