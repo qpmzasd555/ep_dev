@@ -214,6 +214,8 @@ $\color{#9BDDFF}\large{\textbf{(3) bmc log}}$
 
 Собирает логи BMC с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
 
+---
+
 $\color{#9BDDFF}\large{\textbf{(4) sds log}}$
 
 Собирает логи SDS с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
