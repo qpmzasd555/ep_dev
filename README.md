@@ -433,7 +433,7 @@ $\color{#9BDDFF}\large{\textbf{(22) bios backup}}$
 
 <h1 id="application">📝 Приложения</h1>
 
-### $\color{#6F73D2}\large{\textbf{1) Спец символы}}$
+<h3 id="special-characters">$\color{#6F73D2}\large{\textbf{1) Спец символы}}$</h3>
 
 <details>
 <summary>Список</summary>
