@@ -147,19 +147,34 @@ MAX_WORKERS=22
 
 $\color{#9BDDFF}\large{\textbf{(1) pinger}}$
 
-Запускает меню для проверки доступности адресов из [ips.txt](#ips.txt-configuration), команда не требует аргументов.
+Запускает меню для проверки доступности адресов из [ips.txt](#ips.txt-configuration).  
+Доступные аргументы:  
+```sh
+--cycle    # запукает пинг в цикле, пока все сервера не будут доступны
+```
 
-Пример использования с выводом программы:
+Пример использования с выводом программы:  
 ```sh
 ep pinger
-ep 1
+ep 1              # запуск пинга
+ep 1 2            # запуск проверки доступности SSH
+ep 1 2 --cycle    # запуск цикличной проверки SSH
 ```
+
 <details>
-<summary>Вывод</summary>
+<summary>ep 1</summary>
 
 ![screens/pinger.png](screens/pinger_2.png)
 
 </details>
+
+<details>
+<summary>ep 1 2 --cycle</summary>
+
+![screens/pinger.png](screens/ep_1_2_--cycle.png)
+
+</details>
+
 
 ---
 
@@ -179,7 +194,7 @@ ep 6 1
 
 $\color{#9BDDFF}\large{\textbf{(7) dual session}}$
 
-Создаёт для каждого IP из [ips.txt](#настройка-файла-ipstxt) отдельное окно tmux с двумя панелями:
+Создаёт для каждого сервера отдельное окно tmux с двумя панелями:
 - Левая панель: SSH к BMC (порт 22)
 - Правая панель: SOL (порт 2200)  
 
@@ -191,6 +206,7 @@ $\color{#9BDDFF}\large{\textbf{(7) dual session}}$
 Пример использования:
 ```sh
 ep dual_session 1
+ep 7 1
 ```
 <details>
 <summary>Вывод</summary>
@@ -208,15 +224,34 @@ ep dual_session 1
 
 
  *** Для выхода из сессии используйте Alt+0 или в SSH напишите exit, потом kill-server ***
-
-[скрин]
 ```
+
+![screens/pinger.png](screens/ep_7.png)
 
 </details>
 
 ---
 
 $\color{#9BDDFF}\large{\textbf{(20) info collector}}$
+
+Собирает следующую информацию о каждом сервере:  
+- IP
+- Серийный номер
+- BMC версию
+- BIOS версию
+- FPGA версию
+
+Пример использования:
+```sh
+ep 20
+```
+
+<details>
+<summary>Вывод</summary>
+
+![screens/pinger.png](screens/ep_20_(2).png)
+
+</details>
 
 ---
 
@@ -230,12 +265,39 @@ $\color{#9BDDFF}\large{\textbf{(8) power control}}$
 on   -  включить
 off  -  выключить
 st   -  статус
+br   -  перезагрузка BMC
 ```
 
 Пример использования:
 ```sh
 ep power_control on
+ep 8 br
 ```
+
+<details>
+<summary>Вывод</summary>
+
+![screens/pinger.png](screens/ep_8_on.png)
+*ep 8 on*
+
+![screens/pinger.png](screens/ep_8_off.png)
+```sh
+ep 8 off
+```
+
+![screens/pinger.png](screens/ep_8_br.png)
+```sh
+ep 8 br
+```
+
+![screens/pinger.png](screens/ep_8_st.png)
+
+![screens/pinger.png](screens/ep_8_st_(result).png)
+```sh
+ep 8 st
+```
+
+</details>
 
 ---
 
@@ -276,7 +338,15 @@ $\color{#9BDDFF}\large{\textbf{(11) commands pusher}}$
 Пример использования:
 ```sh
 ep command_pusher 1 "cd EFI\BOOT"
+ep 11 2 "health logs clear"
 ```
+
+<details>
+<summary>Вывод</summary>
+
+![screens/pinger.png](screens/ep_11_2_health_logs_clear.png)
+
+</details>
 
 ---
 
@@ -289,6 +359,7 @@ $\color{#9BDDFF}\large{\textbf{(12) special characters}}$
 Пример:
 ```sh
 ep special_characters enter
+ep 12 delete
 ```
 
 ---
@@ -297,41 +368,23 @@ ep special_characters enter
 
 $\color{#9BDDFF}\large{\textbf{(13) uploader}}$
 
-Загружает файлы из папки 'uploader/' на сервер (см. [структуру проекта](#project-structure))
+Загружает файлы из папки `data/uploader/` на сервер в `/tmp/` (см. [структуру проекта](#project-structure)).  
+При запуске программы без указания аргументов/флагов, она выводит нумерованный список всех файлов в папке `data/uploader/`.  
+В качестве аргумента программа принимает номер файла или его название (можно несколько через пробел).
 
 Пример использования:
 ```sh
 ep uploader
-ep 13 all
-ep 13 1
+ep 13 all      # загрузить всё
+ep 13 1        # загрузить первый файл
+ep 13 2 4 5    # загрузить файлы 2, 4 и 5
 ```
 <details>
 <summary>Вывод</summary>
 
-```sh
-Файлы в папке uploader:
-------------------------------------------------------------
- 1. vegman_dump_collector_v4.6.1.sh          (0.0 MB)
- 2. CPLDmbdx8678x004b-v1.10.0-g5177f2f.fs    (2.0 MB)
- 3. bmc-vegman-rx20g2-update-v2.2.1-g695910.bin.md5 (0.0 MB)
- 4. uefi-vegman-rx20g2-2.2.1-gec1bc1.bin     (7.3 MB)
- 5. uefi-vegman-rx20g2-2.2.1-gec1bc1.bin.md5 (0.0 MB)
- 6. uefi-vegman-rx20g2-1.10.8-g8fefc3.bin    (8.1 MB)
- 7. nvram-VEGMAN.R120-v1.10.4-g74bff8.02062501F5.bin (0.1 MB)
- 8. bmc-vegman-rx20g2-update-v1.10.8re36884.bin (26.8 MB)
- 9. bmc-vegman-rx20g2-update-v2.2.1-g695910.bin (27.6 MB)
-10. openbmc-upgrade-guide-2-2-1.pdf          (0.2 MB)
-------------------------------------------------------------
-Всего файлов: 10
+![screens/pinger.png](screens/ep_13.png)
 
-Использование:
-  easy_pnr 13 all             - Загрузить все файлы
-  easy_pnr 13 1               - Загрузить файл №1
-  easy_pnr 13 1,4             - Загрузить файлы №1 и №4
-  easy_pnr 13 1 4 5           - Загрузить файлы №1, №4 и №5
-  easy_pnr 13 <имя_файла>     - Загрузить конкретный файл
-  easy_pnr 13 -h              - Показать подробную справку
-```
+![screens/pinger.png](screens/ep_13_all_(result).png)
 
 </details>
 
@@ -339,7 +392,7 @@ ep 13 1
 
 $\color{#9BDDFF}\large{\textbf{(14) downloader}}$
 
-Скачивает файлы из папки /tmp/ всех серверов из [ips.txt](#настройка-файла-ipstxt) 
+Скачивает файлы из папки `/tmp/` в `data/downloader/`
 
 Пример использования:
 ```sh
@@ -352,11 +405,35 @@ $\color{#9BDDFF}\large{\textbf{(15) bmc update}}$
 
 Обновляет BMC
 
+Пример использования:
+```sh
+ep 15
+```
+
+<details>
+<summary>Вывод</summary>
+
+![screens/pinger.png](screens/ep_15.png)
+
+</details>
+
 ---
 
 $\color{#9BDDFF}\large{\textbf{(16) uefi update}}$
 
 Обновляет BIOS
+
+Пример использования:
+```sh
+ep 16
+```
+
+<details>
+<summary>Вывод</summary>
+
+![screens/pinger.png](screens/ep_16.png)
+
+</details>
 
 ---
 
@@ -364,11 +441,40 @@ $\color{#9BDDFF}\large{\textbf{(17) nvram update}}$
 
 Переписывает настройки BIOS
 
+Пример использования:
+```sh
+ep 17
+```
+
+<details>
+<summary>Вывод</summary>
+
+</details>
+
 ---
 
 $\color{#9BDDFF}\large{\textbf{(18) fpga update}}$
 
 Обновляет FPGA
+
+Пример использования:
+```sh
+ep 18
+```
+
+<details>
+<summary>Вывод</summary>
+
+</details>
+
+---
+
+$\color{#9BDDFF}\large{\textbf{(19) bios backup}}$
+
+Пример использования:
+```sh
+ep 18
+```
 
 ---
 
@@ -376,13 +482,13 @@ $\color{#9BDDFF}\large{\textbf{(18) fpga update}}$
 
 $\color{#9BDDFF}\large{\textbf{(3) bmc log}}$
 
-Собирает логи BMC с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
+Собирает логи BMC с каждого сервера
 
 ---
 
 $\color{#9BDDFF}\large{\textbf{(4) sds log}}$
 
-Собирает логи SDS с каждого сервера из [ips.txt](#настройка-файла-ipstxt)
+Собирает логи SDS с каждого сервера
 
 ---
 
@@ -404,7 +510,7 @@ $\color{#9BDDFF}\large{\textbf{(666) rm known hosts}}$
 
 Очищает сохраненные записи о хостах.  
 Важнейший инструмент для исправления проблем.  
-Что-то не работает? Пропишите 'rm_known_hosts':
+Что-то не работает? Пропишите `rm_known_hosts`:
 
 ```sh
 ep 666
@@ -412,22 +518,56 @@ ep 666
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(22) dhcp}}$
+$\color{#9BDDFF}\large{\textbf{(2) sol sds ip changer}}$
+
+Выставляет на eno4 интерфейсах серверов адреса с eth0.  
+Это нужно, чтобы, переключаясь на eno4 для снятия логов с SDS, не терять связь с сервером.
+
+Пример использования:
+```sh
+ep 2
+```
+
+---
+
+$\color{#9BDDFF}\large{\textbf{(23) dhcp}}$
 
 Запускает DHCP сервер.  
-Все подключенные устройства автоматически записываюся в [ips.txt](#настройка-файла-ipstxt)
+Все подключенные устройства автоматически записываюся в [ips.txt](#настройка-файла-ipstxt).  
+При вызове программы без аргументов/флагов выводит список интерфейсов на устройстве.
+
+Флаги и аргументы:
+```sh
+# --==  Обязательные  ==--
+-i, --iface     # указать сетевой интерфейс
+-c, --count     # указать количество раздаваемых адресов (1 - 254)
+# --==  ============  ==--
+
+# --== Дополнительные ==--
+-d, --range     # диапазон IP адресов (по умолчанию 1 - {count})
+--full-clear    # полная очистка: DHCP записи + ARP + перезапуск dnsmasq
+--quiet         # тихий режим - только важная информация
+# --== ============== ==--
+```
+
+Пример использования:
+```sh
+ep 23
+ep 23 -i eth0 -c 15
+ep 23 -i eth0 -c 15 -d 11-25
+```
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(22) sol sds ip changer}}$
+$\color{#9BDDFF}\large{\textbf{(24) set static ip}}$
 
+Выставляет на eth0 серверов статические IP.  
+Полезно для длительных работ.
 
-
----
-
-$\color{#9BDDFF}\large{\textbf{(22) bios backup}}$
-
-
+Пример использования:
+```sh
+ep 24
+```
 
 ![deep](https://user-images.githubusercontent.com/12748752/150695343-8977b5d0-3cd4-4959-b90e-9fe72d336d42.png)
 
@@ -512,6 +652,42 @@ Alt  +  Space      -    Следующая раскладка
 Alt  +  s          -    Переключить broadcast/unicast режим (одновременный ввод)
 Alt  +  i/I        -    Выключить/включить отображение IP в заголовках
 Ctrl +  a          -    Префикс tmux
+```
+
+</details>
+
+<h3 id="aliases">$\color{#6F73D2}\large{\textbf{3) Общий список команд}}$</h3>
+
+<details>
+<summary>Список</summary>
+
+```sh
+"1":      # pinger
+"2":      # sol_sds_ip_changer
+"3":      # bmc_log
+"4":      # sds_log
+"5":      # parser
+"6":      # monitor
+"7":      # dual_session
+"8":      # power_control
+"9":      # redfish_boot_switcher
+"10":     # catcher
+"11":     # commands_pusher
+"12":     # special_characters
+"13":     # uploader
+"14":     # downloader
+"15":     # bmc_update_script
+"16":     # uefi_update_script
+"17":     # nvram_dump_write
+"18":     # fpga_updater
+"19":     # bios_backup
+"20":     # info_collector
+"21":     # uefi_boot_default
+"22":     # logs_saver
+"23":     # dhcp_master
+"24":     # set_static_ip
+"101":    # easy_log
+"666":    # rm_known_hosts
 ```
 
 </details>
