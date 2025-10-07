@@ -9,8 +9,6 @@
 -    -    -    -    -    -    -     -    -    -    -    -    -    -
 ```
 
-
-
 EASY - это инструмент, предназначенный для автоматизации проведения массовых пуско-наладочных работ. EASY включает в себя большое количество скриптов, упрощающих процесс настройки серверов VEGMAN.
 
 Авторство: YADRO Team x86
@@ -42,74 +40,6 @@ EASY - это инструмент, предназначенный для авт
 
 Все логины и пароли хранятся тут.  
 Файл создается в корневой директории проекта (см. [структуру проекта](#project-structure))  
-Для корректной работы EASY требуется добавить следующие данные в credentials.py:  
-```txt
-ADMIN_LOGIN        -  логин от админа BMC  
-ADMIN_PASSWORD     -  пароль от админа BMC  
-
-TECH_LOGIN         -  логин от теха  
-TECH_PASSWORD      -  пароль от теха  
-
-ROOT_LOGIN         -  логин от рута  
-ROOT_PASSWORD      -  пароль от рута  
-
-SDS_LOGIN          -  логин от SDS  
-SDS_PASSWORD       -  пароль от SDS  
-
-SDS_LOGIN_ROOT     -  логин от рута SDS  
-SDS_PASSWORD_ROOT  -  пароль от рута SDS  
-
-MAX_PARALLEL=22  
-MAX_WORKERS=22  
-Последние контролируют, сколько параллельных процессов могут запуститься.  
-Эти две настройки лучше оставить на значениях 22.
-```
-
-<details>
-<summary>Пример файла credentials.py</summary>
-
-```py
-#!/usr/bin/env python3
-"""
-Учетные данные для EasyPNR
-"""
-
-# --== BMC ==--
-ADMIN_LOGIN = "admin"
-ADMIN_PASSWORD = "********"
-
-TECH_LOGIN = "tech"
-TECH_PASSWORD = "********"
-
-ROOT_LOGIN = 'root'
-ROOT_PASSWORD = '********'
-# --== === ==---
-
-# --== SDS ==--
-SDS_LOGIN = 'sds'
-SDS_PASSWORD = '********'
-
-SDS_LOGIN_ROOT = 'root'
-SDS_PASSWORD_ROOT = '********'
-# --== === ==---
-
-# -- Threads --
-MAX_PARALLEL=22
-MAX_WORKERS=22
-# -- Threads --
-
-```
-
-</details>
-
-<details>
-<summary>Быстрое создание credentials.py</summary>
-
-```sh
-
-```
-
-</details>
 
 <h2 id="project-structure">📁 СТРУКТУРА ПРОЕКТА</h2>
 
@@ -145,7 +75,7 @@ MAX_WORKERS=22
 
 <h2 id="commands-monitor">Мониторинг</h2>
 
-$\color{#9BDDFF}\large{\textbf{(1) pinger}}$
+### ep pinger == ep 1
 
 Запускает меню для проверки доступности адресов из [ips.txt](#ips.txt-configuration).  
 Доступные аргументы:  
@@ -164,21 +94,21 @@ ep 1 2 --cycle    # запуск цикличной проверки SSH
 <details>
 <summary>ep 1</summary>
 
-![screens/pinger.png](screens/pinger_2.png)
+![screens/pinger_2.png](screens/pinger_2.png)
 
 </details>
 
 <details>
 <summary>ep 1 2 --cycle</summary>
 
-![screens/pinger.png](screens/ep_1_2_--cycle.png)
+![screens/ep_1_2_--cycle.png](screens/ep_1_2_--cycle.png)
 
 </details>
 
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(6) monitor}}$
+### ep monitor == ep 6
 
 Создает tmux окна с панелями для всех серверов  
 Каждая панель содержит ssh-подключение к соответствующему серверу.  
@@ -192,7 +122,7 @@ ep 6 1
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(7) dual session}}$
+### ep dual_session == ep 7
 
 Создаёт для каждого сервера отдельное окно tmux с двумя панелями:
 - Левая панель: SSH к BMC (порт 22)
@@ -226,13 +156,13 @@ ep 7 1
  *** Для выхода из сессии используйте Alt+0 или в SSH напишите exit, потом kill-server ***
 ```
 
-![screens/pinger.png](screens/ep_7.png)
+![screens/ep_7.png](screens/ep_7.png)
 
 </details>
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(20) info collector}}$
+### ep info_collector == ep 20
 
 Собирает следующую информацию о каждом сервере:  
 - IP
@@ -249,7 +179,7 @@ ep 20
 <details>
 <summary>Вывод</summary>
 
-![screens/pinger.png](screens/ep_20_(2).png)
+![screens/ep_20_(2).png](screens/ep_20_(2).png)
 
 </details>
 
@@ -257,7 +187,7 @@ ep 20
 
 <h2 id="commands-management">Управление</h2>
 
-$\color{#9BDDFF}\large{\textbf{(8) power control}}$
+### ep power_control == ep 8
 
 Включает/выключает хост.  
 Принимает аргумент:
@@ -277,22 +207,22 @@ ep 8 br
 <details>
 <summary>Вывод</summary>
 
-![screens/pinger.png](screens/ep_8_on.png)
+![screens/ep_8_on.png](screens/ep_8_on.png)
 *ep 8 on*
 
-![screens/pinger.png](screens/ep_8_off.png)
+![screens/ep_8_off.png](screens/ep_8_off.png)
 ```sh
 ep 8 off
 ```
 
-![screens/pinger.png](screens/ep_8_br.png)
+![screens/ep_8_br.png](screens/ep_8_br.png)
 ```sh
 ep 8 br
 ```
 
-![screens/pinger.png](screens/ep_8_st.png)
+![screens/ep_8_st.png](screens/ep_8_st.png)
 
-![screens/pinger.png](screens/ep_8_st_(result).png)
+![screens/ep_8_st_(result).png](screens/ep_8_st_(result).png)
 ```sh
 ep 8 st
 ```
@@ -301,7 +231,7 @@ ep 8 st
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(9) boot switcher}}$
+### ep boot_switcher == ep 9
 
 Изменяет, куда загружается хост
 
@@ -312,7 +242,7 @@ ep boot_switcher uefishell
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(10) catcher}}$
+### ep catcher == ep 10
 
 "Ловит" состояние сервера для грамотного исполнения скриптов, чтобы отправлять команды в нужный момент времени.
 
@@ -324,7 +254,7 @@ $\color{#9BDDFF}\large{\textbf{(10) catcher}}$
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(11) commands pusher}}$
+### ep commands_pusher == ep 11
 
 Отправляет команды в консоль. Первый аргумент - пункт назначения команды (SOL, BMC, SDS), второй - сама команда.
 
@@ -344,13 +274,13 @@ ep 11 2 "health logs clear"
 <details>
 <summary>Вывод</summary>
 
-![screens/pinger.png](screens/ep_11_2_health_logs_clear.png)
+![screens/ep_11_2_health_logs_clear.png](screens/ep_11_2_health_logs_clear.png)
 
 </details>
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(12) special characters}}$
+### ep special_characters == ep 12
 
 Отправляет в консоль SOL специальные знаки.
 
@@ -366,7 +296,7 @@ ep 12 delete
 
 <h2 id="commands-update">Обновления</h2>
 
-$\color{#9BDDFF}\large{\textbf{(13) uploader}}$
+### ep uploader == ep 13
 
 Загружает файлы из папки `data/uploader/` на сервер в `/tmp/` (см. [структуру проекта](#project-structure)).  
 При запуске программы без указания аргументов/флагов, она выводит нумерованный список всех файлов в папке `data/uploader/`.  
@@ -382,15 +312,15 @@ ep 13 2 4 5    # загрузить файлы 2, 4 и 5
 <details>
 <summary>Вывод</summary>
 
-![screens/pinger.png](screens/ep_13.png)
+![screens/ep_13.png](screens/ep_13.png)
 
-![screens/pinger.png](screens/ep_13_all_(result).png)
+![screens/ep_13_all_(result).png](screens/ep_13_all_(result).png)
 
 </details>
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(14) downloader}}$
+### ep downloader == ep 14
 
 Скачивает файлы из папки `/tmp/` в `data/downloader/`
 
@@ -401,7 +331,7 @@ ep downloader
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(15) bmc update}}$
+### ep bmc_update == ep 15
 
 Обновляет BMC
 
@@ -413,13 +343,13 @@ ep 15
 <details>
 <summary>Вывод</summary>
 
-![screens/pinger.png](screens/ep_15.png)
+![screens/ep_15.png](screens/ep_15.png)
 
 </details>
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(16) uefi update}}$
+### ep uefi_update == ep 16
 
 Обновляет BIOS
 
@@ -431,13 +361,13 @@ ep 16
 <details>
 <summary>Вывод</summary>
 
-![screens/pinger.png](screens/ep_16.png)
+![screens/ep_16.png](screens/ep_16.png)
 
 </details>
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(17) nvram update}}$
+### ep nvram_update == ep 17
 
 Переписывает настройки BIOS
 
@@ -453,7 +383,7 @@ ep 17
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(18) fpga update}}$
+### ep fpga_update == ep 18
 
 Обновляет FPGA
 
@@ -469,7 +399,7 @@ ep 18
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(19) bios backup}}$
+### ep bios_backup == ep 19
 
 Пример использования:
 ```sh
@@ -480,25 +410,25 @@ ep 18
 
 <h2 id="commands-logs">Логи</h2>
 
-$\color{#9BDDFF}\large{\textbf{(3) bmc log}}$
+### ep bmc_log == ep 3
 
 Собирает логи BMC с каждого сервера
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(4) sds log}}$
+### ep sds_log == ep 4
 
 Собирает логи SDS с каждого сервера
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(5) parser}}$
+### ep parser == ep 5
 
 
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(22) logs saver}}$
+### ep logs_saver == ep 22
 
 
 
@@ -506,7 +436,7 @@ $\color{#9BDDFF}\large{\textbf{(22) logs saver}}$
 
 <h2 id="commands-special">Служебные</h2>
 
-$\color{#9BDDFF}\large{\textbf{(666) rm known hosts}}$
+### ep rm_known_hosts == ep 666
 
 Очищает сохраненные записи о хостах.  
 Важнейший инструмент для исправления проблем.  
@@ -518,7 +448,7 @@ ep 666
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(2) sol sds ip changer}}$
+### ep sol_sds_ip_changer == ep 2
 
 Выставляет на eno4 интерфейсах серверов адреса с eth0.  
 Это нужно, чтобы, переключаясь на eno4 для снятия логов с SDS, не терять связь с сервером.
@@ -530,7 +460,7 @@ ep 2
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(23) dhcp}}$
+### ep dhcp == ep 23
 
 Запускает DHCP сервер.  
 Все подключенные устройства автоматически записываюся в [ips.txt](#настройка-файла-ipstxt).  
@@ -559,7 +489,7 @@ ep 23 -i eth0 -c 15 -d 11-25
 
 ---
 
-$\color{#9BDDFF}\large{\textbf{(24) set static ip}}$
+### ep set_static_ip == ep 24
 
 Выставляет на eth0 серверов статические IP.  
 Полезно для длительных работ.
