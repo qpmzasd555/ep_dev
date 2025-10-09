@@ -615,7 +615,7 @@ Ctrl +  a          -    Префикс tmux
 
 </details>
 
-<h3 id="tmux-control">$\color{#6F73D2}\large{\textbf{n) Настройка EASY на WSL}}$</h3>
+<h3 id="tmux-control">$\color{#6F73D2}\large{\textbf{n) Настройка EASY на WSL}}$    $\color{#FF6961}\large{\textbf{Coming later}}$</h3>
 
 <details>
 <summary>Минимальные требования</summary>
