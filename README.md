@@ -110,10 +110,9 @@ ep 1 2 --cycle    # запуск цикличной проверки SSH
 
 ### ep monitor == ep 6
 
-Создает tmux окна с панелями для всех серверов  
-Каждая панель содержит ssh-подключение к соответствующему серверу.  
+Создает tmux окна с SOL консолями для всех серверов.  
 Автоматически создает дополнительные окна при большом количестве серверов.  
-Управление окнами, переключение между ними и прочие действия выполняются при помощи [горячих клавиш](#tmux-control)
+Управление окнами, переключение между ними и прочие действия выполняются при помощи [горячих клавиш](#tmux-control).
 
 Пример использования:
 ```sh
@@ -131,7 +130,7 @@ ep 6 1
 Горячие клавиши:
 - Alt + n/p - переключение между окнами (следующее/предыдущее)
 - Alt + ←/→/↑/↓ - переключение между панелями
-- Alt + 0 - завершить tmux сервер (kill-server)
+- Alt + 0 - завершить tmux
 
 Пример использования:
 ```sh
@@ -205,27 +204,11 @@ ep 8 br
 ```
 
 <details>
-<summary>Вывод</summary>
-
-![screens/ep_8_on.png](screens/ep_8_on.png)
-*ep 8 on*
-
-![screens/ep_8_off.png](screens/ep_8_off.png)
-```sh
-ep 8 off
-```
-
-![screens/ep_8_br.png](screens/ep_8_br.png)
-```sh
-ep 8 br
-```
+<summary>Вывод `ep 8 st`</summary>
 
 ![screens/ep_8_st.png](screens/ep_8_st.png)
 
 ![screens/ep_8_st_(result).png](screens/ep_8_st_(result).png)
-```sh
-ep 8 st
-```
 
 </details>
 
@@ -333,7 +316,7 @@ ep downloader
 
 ### ep bmc_update == ep 15
 
-Обновляет BMC
+Обновляет BMC.
 
 Пример использования:
 ```sh
@@ -351,7 +334,7 @@ ep 15
 
 ### ep uefi_update == ep 16
 
-Обновляет BIOS
+Обновляет BIOS.
 
 Пример использования:
 ```sh
@@ -369,7 +352,7 @@ ep 16
 
 ### ep nvram_update == ep 17
 
-Переписывает настройки BIOS
+Переписывает настройки BIOS.
 
 Пример использования:
 ```sh
@@ -385,7 +368,7 @@ ep 17
 
 ### ep fpga_update == ep 18
 
-Обновляет FPGA
+Обновляет FPGA.
 
 Пример использования:
 ```sh
@@ -412,25 +395,35 @@ ep 18
 
 ### ep bmc_log == ep 3
 
-Собирает логи BMC с каждого сервера
+Собирает логи BMC с каждого сервера.
 
 ---
 
 ### ep sds_log == ep 4
 
-Собирает логи SDS с каждого сервера
+Собирает логи SDS с каждого сервера.
 
 ---
 
 ### ep parser == ep 5
 
+Объединяет собранные BMC и SDS логи.
 
+Пример использования:
+```sh
+ep 5
+```
 
 ---
 
 ### ep logs_saver == ep 22
 
+Сохраняет логи на флешку в специально отведенный раздел.
 
+Пример использования:
+```sh
+ep 22
+```
 
 ---
 
@@ -482,7 +475,7 @@ ep 2
 
 Пример использования:
 ```sh
-ep 23
+ep 23                           # Тут можно узнать свой интерфейс
 ep 23 -i eth0 -c 15
 ep 23 -i eth0 -c 15 -d 11-25
 ```
@@ -635,23 +628,19 @@ Ctrl +  a          -    Префикс tmux
 <details>
 <summary>Установка EASY в WSL</summary>
 
-Скопируйте проект в `C:\EasyPNR` вручную или командой (Windows CMD):
+Скопируйте проект в `C:\EasyPNR\ep\` вручную или командами (WSL):
 ```cmd
-mkdir c:\EasyPNR
-cd c:\EasyPNR
+mkdir -p /mnt/c/EasyPNR/ep/
+cd /mnt/c/EasyPNR/ep/
 git clone https://github.com/Stanly1-1/Engineering-Automation-Shell-YADRO.git
 ```
+
 <details>
 <summary>Результат</summary>
 
 ![screens/WSL_setup.png](screens/WSL_setup.png)
 
 </details>
-
-В WSL перейдите в `/mnt/c/EasyPNR/` (там сейчас находится проект):
-```sh
-cd /mnt/c/EasyPNR/
-```
 
 Создайте виртуальное окружение (немного терпения, команда выполняется, ничего не зависло):
 ```sh
@@ -696,7 +685,7 @@ pip install -r requirements.txt
 
 Для начала работы с инструментом нужно создать в системе алиас (сокращение):
 ```sh
-echo "alias ep='cd /mnt/c/EasyPNR/ && source venv/bin/activate && python3 /mnt/c/EasyPNR/EasyPNR_prod.py'" >> ~/.bashrc && source ~/.bashrc
+echo "alias ep='cd /mnt/c/EasyPNR/ep/ && source venv/bin/activate && python3 /mnt/c/EasyPNR/ep/EasyPNR_prod.py'" >> ~/.bashrc && source ~/.bashrc
 ```
 Теперь инструмент доступен по команде `ep`
 
