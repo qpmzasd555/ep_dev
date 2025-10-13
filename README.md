@@ -497,8 +497,6 @@ ep 24
 
 <h3 id="special-characters">$\color{#6F73D2}\large{\textbf{1) Спец символы}}$</h3>
 
-$\color{#6F73D2}\large{\textbf{1) Спец символы}}$
-
 <details>
 <summary>Список</summary>
 
