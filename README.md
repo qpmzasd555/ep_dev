@@ -497,7 +497,7 @@ ep 24
 
 <h1 id="application">📝 Приложения</h1>
 
-<h3 id="special-characters">$\color{#6F73D2}\large{\textbf{1) Спец символы}}$</h3>
+<h3 id="special-characters">1) Спец символы</h3>
 
 <details>
 <summary>Список</summary>
@@ -559,7 +559,7 @@ ep 24
 
 </details>
 
-<h3 id="tmux-control">$\color{#6F73D2}\large{\textbf{2) Управление tmux}}$</h3>
+<h3 id="tmux-control">2) Управление tmux</h3>
 
 <details>
 <summary>Горячие клавиши</summary>
@@ -580,7 +580,7 @@ Ctrl +  a          -    Префикс tmux
 
 </details>
 
-<h3 id="aliases">$\color{#6F73D2}\large{\textbf{3) Общий список команд}}$</h3>
+<h3 id="aliases">3) Общий список команд</h3>
 
 <details>
 <summary>Список</summary>
@@ -616,7 +616,9 @@ Ctrl +  a          -    Префикс tmux
 
 </details>
 
-<h3 id="tmux-control">$\color{#6F73D2}\large{\textbf{n) Настройка EASY на WSL}}$    ($\color{#FF6961}\large{\textbf{Coming later}}$)</h3>
+<h3 id="wsl">n) Настройка EASY на WSL</h3>
+
+$\color{#FF6961}\large{\textbf{В разработке...}}$
 
 <details>
 <summary>Минимальные требования</summary>
