@@ -81,7 +81,7 @@ ep -a
 > [!TIP]  
 > К любой команде можно добавить флаг `-h` для получения справочной информации по команде.
 
-<h2 id="commands-monitor">Мониторинг</h2>
+<h2 id="commands-monitor">🖥️ Мониторинг</h2>
 
 ### ep pinger == ep 1
 
@@ -189,7 +189,7 @@ ep 20
 
 ---
 
-<h2 id="commands-management">Управление</h2>
+<h2 id="commands-management">🕹️ Управление</h2>
 
 ### ep power_control == ep 8
 
@@ -282,7 +282,7 @@ ep 12 delete
 
 ---
 
-<h2 id="commands-update">Обновления</h2>
+<h2 id="commands-update">🔄 Обновления</h2>
 
 ### ep uploader == ep 13
 
@@ -388,7 +388,7 @@ ep 19
 
 ---
 
-<h2 id="commands-logs">Логи</h2>
+<h2 id="commands-logs">🧾 Логи</h2>
 
 ### ep bmc_log == ep 3
 
@@ -424,7 +424,7 @@ ep 22
 
 ---
 
-<h2 id="commands-special">Служебные</h2>
+<h2 id="commands-special">🛠️ Служебные</h2>
 
 ### ep rm_known_hosts == ep 666
 
