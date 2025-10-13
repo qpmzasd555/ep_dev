@@ -495,7 +495,7 @@ ep 24
 
 ![deep](https://user-images.githubusercontent.com/12748752/150695343-8977b5d0-3cd4-4959-b90e-9fe72d336d42.png)
 
-<h1 id="application">📝 Приложения</h1>
+<h1 id="application">🧷 Приложения</h1>
 
 <h3 id="special-characters">1) Спец символы</h3>
 
