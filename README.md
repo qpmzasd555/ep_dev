@@ -195,11 +195,11 @@ ep 20
 
 Включает/выключает хост.  
 Принимает аргумент:
-```
-on   -  включить
-off  -  выключить
-st   -  статус
-br   -  перезагрузка BMC
+```sh
+"on"     # включить
+"off"    # выключить
+"st"     # статус
+"br"     # перезагрузка BMC
 ```
 
 Пример использования:
@@ -634,7 +634,7 @@ $\color{#FF6961}\large{\textbf{В разработке...}}$
 <summary>Установка EASY в WSL</summary>
 
 Скопируйте проект в `C:\EasyPNR\ep\` вручную или командами (WSL):
-```cmd
+```sh
 mkdir -p /mnt/c/EasyPNR/ep/
 cd /mnt/c/EasyPNR/ep/
 git clone https://github.com/Stanly1-1/Engineering-Automation-Shell-YADRO.git
