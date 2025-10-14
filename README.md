@@ -245,8 +245,6 @@ ep boot_switcher uefishell
 - SDS
 - LiveCD
 
-Можно использовать, чтобы загрузиться в нужную ОС.
-
 Пример использования:
 ```sh
 ep 10 uefishell
