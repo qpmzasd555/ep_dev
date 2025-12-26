@@ -690,7 +690,7 @@ source venv/bin/activate
 
 Установите системные пакеты:
 ```sh
-sudo apt install -y python3 python3-pip python3-venv sshpass iputils-ping net-tools tmux
+sudo apt install -y python3 python3-pip python3-venv sshpass iputils-ping net-tools tmux rsync
 ```
 
 Обновите pip:
