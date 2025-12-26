@@ -721,4 +721,17 @@ echo "alias ep='cd /mnt/c/EasyPNR/ep/ && source venv/bin/activate && python3 /mn
 > [!TIP]  
 > Вместо `ep` можно написать любой удобный вам алиас.
 
+Также, требуется разрешить ssh работать с ssh-rsa.
+Для этого пропишите в `~/.ssh/config`:
+```txt
+Host *
+    HostKeyAlgorithms +ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
+```
+Если в `~/.ssh/config` есть другие настройки, сначала создайте их бекап:
+```sh
+echo ~/.ssh/config > ~/.ssh/config.backup
+```
+
+И последнее - [credentials.py](#credentials.py-configuration)!
 </details>
