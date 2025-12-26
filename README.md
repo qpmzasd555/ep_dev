@@ -721,7 +721,7 @@ echo "alias ep='cd /mnt/c/EasyPNR/ep/ && source venv/bin/activate && python3 /mn
 > [!TIP]  
 > Вместо `ep` можно написать любой удобный вам алиас.
 
-Также, требуется разрешить ssh работать с ssh-rsa.
+Также, требуется разрешить ssh работать с ssh-rsa.  
 Для этого пропишите в `~/.ssh/config`:
 ```txt
 Host *
