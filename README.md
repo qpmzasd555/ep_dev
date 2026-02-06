@@ -657,6 +657,11 @@ $\color{#FF6961}\large{\textbf{В разработке...}}$
 <details>
 <summary>Установка EASY в WSL</summary>
 
+Установите системные пакеты:
+```sh
+sudo apt install -y python3 python3-pip python3-venv sshpass iputils-ping net-tools tmux rsync
+```
+
 Скопируйте проект в `C:\EasyPNR\ep\` вручную или командами (WSL):
 ```sh
 mkdir -p /mnt/c/EasyPNR/ep/
@@ -688,19 +693,14 @@ source venv/bin/activate
 <details>
 <summary>Установка зависимостей</summary>
 
-Установите системные пакеты:
-```sh
-sudo apt install -y python3 python3-pip python3-venv sshpass iputils-ping net-tools tmux rsync
-```
+> [!IMPORTANT]  
+> Проверьте, что вы в виртуальном окружении!  
+> В начале командной строки должна быть надпись "(venv)"!
 
 Обновите pip:
 ```sh
 pip install --upgrade pip
 ```
-
-> [!IMPORTANT]  
-> Проверьте, что вы в виртуальном окружении!  
-> В начале командной строки должна быть надпись "(venv)"!
 
 Установите зависимости:
 ```sh
