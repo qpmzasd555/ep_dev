@@ -644,8 +644,6 @@ ep 24
 
 <h3 id="wsl">n) Настройка EASY на WSL</h3>
 
-$\color{#FF6961}\large{\textbf{В разработке...}}$
-
 <details>
 <summary>Минимальные требования</summary>
 
