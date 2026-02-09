@@ -652,6 +652,8 @@ $\color{#FF6961}\large{\textbf{В разработке...}}$
 - Linux Ubuntu 24.04 (можно использовать и другие версии, но они не тестировались)
 - Python 3.10 (в WSL уже есть)
 
+Если используете другие версии WSL или Python, убедитесь, что на них есть все требуемые зависимости.
+
 </details>
 
 <details>
@@ -663,12 +665,9 @@ sudo apt update
 sudo apt install -y python3 python3-pip python3-venv sshpass iputils-ping net-tools tmux rsync
 ```
 
-Скопируйте проект в `C:\EasyPNR\ep\` вручную или командами (WSL):
-```sh
-mkdir -p /mnt/c/EasyPNR/ep/
-cd /mnt/c/EasyPNR/ep/
-git clone https://github.com/Stanly1-1/Engineering-Automation-Shell-YADRO.git
-```
+Скопируйте проект в `C:\EasyPNR\ep\`. Ссылку на него можно взять у коллег или в рабочем чате.
+
+Можно использовать и другой путь (например `~/ep`), но тогда заменяйте его на свой во всех последующих командах.
 
 <details>
 <summary>Результат</summary>
@@ -679,6 +678,7 @@ git clone https://github.com/Stanly1-1/Engineering-Automation-Shell-YADRO.git
 
 Создайте виртуальное окружение (немного терпения, команда выполняется, ничего не зависло):
 ```sh
+cd /mnt/c/EasyPNR/ep/
 python3 -m venv venv
 ```
 
@@ -723,13 +723,19 @@ echo "alias ep='cd /mnt/c/EasyPNR/ep/ && source venv/bin/activate && python3 /mn
 > Вместо `ep` можно написать любой удобный вам алиас.
 
 Также, требуется разрешить ssh работать с ssh-rsa.  
-Для этого пропишите в `~/.ssh/config`:
+Для этого создайте `~/.ssh/config`, если его нет:
+```sh
+mkdir ~/.ssh/
+touch ~/.ssh/config
+```
+Затем пропишите в `~/.ssh/config`:
 ```txt
 Host *
     HostKeyAlgorithms +ssh-rsa
     PubkeyAcceptedKeyTypes +ssh-rsa
 ```
-Если в `~/.ssh/config` есть другие настройки, сначала создайте их бекап:
+
+Если `~/.ssh/config` уже существует и/или в нем есть другие настройки, сначала создайте бекап:
 ```sh
 echo ~/.ssh/config > ~/.ssh/config.backup
 ```
